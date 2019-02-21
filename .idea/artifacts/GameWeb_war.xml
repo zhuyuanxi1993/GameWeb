@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="GameWeb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="zyx.war">
+      <element id="artifact" artifact-name="GameWeb:war exploded" />
+    </root>
+  </artifact>
+</component>
