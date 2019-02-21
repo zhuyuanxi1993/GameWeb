@@ -3,6 +3,25 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- 配置shiro的过滤器工厂类，id- shiroFilter要和我们在web.xml中配置的过滤器一致 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 登录页面 -->
+        <property name="loginUrl" value="/login"/>
+        <!-- 登录成功后的页面 -->
+        <property name="successUrl" value="/index"/>
+        <!-- 非法访问跳转的页面 -->
+        <property name="unauthorizedUrl" value="/403"/>
+        <!-- 权限配置 -->
+        <property name="filterChainDefinitions">
+            <value>
+                <!-- 无需认证即可访问的静态资源，还可以添加其他 url -->
+                /static/** = anon
+                <!-- 除了上述忽略的资源，其他所有资源都需要认证后才能访问 -->
+                /** = authc
+            </value>
+        </property>
+    </bean>
 
 
 </beans>
