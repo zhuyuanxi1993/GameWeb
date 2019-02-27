@@ -4,6 +4,7 @@ import com.zyx.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -13,7 +14,7 @@ public class UserController {
     /**
      * 用户登录
      */
-    @PostMapping("/login")
+    @RequestMapping("/login")
     public String login(@Valid User user, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         try {
             if(bindingResult.hasErrors()){
@@ -30,7 +31,7 @@ public class UserController {
     /**
      * 注销登录
      */
-    @GetMapping（"/logout")
+    @RequestMapping（"/logout")
     public String logout(RedirectAttributes redirectAttributes ){
         SecurityUtils.getSubject().logout();
         return "redirect:login";
